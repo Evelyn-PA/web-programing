@@ -1,0 +1,228 @@
+<html>
+
+<head>
+    <nav class="navbar">
+        <h1 class="logo">Wander Whimsy</h1>
+        <ul class="nav-links">
+            <li class="active"><a href="#"></a>Home</li>
+            <li><a href="#"></a>Destination</li>
+            <li><a href="#"></a>Travel Tips</li>
+            <li><a href="#"></a>About</li>
+        </ul>
+        <div class="mobile-nav">
+            <img src="./menu-btn.png" alt="" class="menu-btn" />
+            <h1 class="close-btn">X</h1>
+        </div>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <h2>Explore The World With Wander Whimsy</h2>
+            <p>
+                Join us on a journey to discover hidden gems, exciting adventures, and
+                unforgettable experiences around the globe. Let Whander Whimsy be your
+                Guide to a world full of wonder and wanderlust.
+            </p>
+
+            <a href="#" class="ctn">Start Exploring</a>
+        </div>
+    </header>
+
+    <script>
+        const mobileNav = document.querySelector(".mobile-nav");
+        const menuBtn = document.querySelector(".menu-btn");
+        const navlinks = document.querySelector(".nav-links");
+        const closeBtn = document.querySelector(".close-btn");
+
+        mobileNav.addEventListener("click", (e) => {
+            navlinks.classList.toggle("mobile-menu");
+            if (e.target === menuBtn) {
+                menuBtn.replaceWith(closeBtn);
+                closeBtn.style.display = "block";
+            }
+            if (e.target === closeBtn) {
+                closeBtn.replaceWith(menuBtn);
+            }
+        });
+    </script>
+
+    <title>Wander Whimsy</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <lang="en">
+        <!-- Font: Inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&family=Pacifico&display=swap"
+            rel="stylesheet">
+</head>
+
+<body>
+    <!-- The about us content with image-->
+    <div class="body">
+        <div id="content-abus">
+            <h3 id="header">ABOUT US</h3>
+            <h2 id="title">Explore The World </br>With Us</h2>
+            <h4 id="content">Welcome to Wander Whimsy,</br>
+                where we share inspiring travel stories, practical tips,</br>
+                and carefully curated guides to help you explore the world.</br>
+                no matter your budget or experience level.</h4>
+        </div>
+        <div>
+            <img src="Images/about_us.jpg" alt="About us" id="about_us_img">
+        </div>
+    </div>
+
+    <div class="option">
+        <div class="box" id="option-1">
+            <img src="Images/option-1.jpg" alt="option-1">
+            <button id="btn-1">Travel Blog</button>
+        </div>
+
+        <div class="box" id="option-2">
+            <img src="Images/option-2.jpg" alt="option-2">
+            <button id="btn-2">Destination</button>
+        </div>
+
+        <div class="box" id="option-3">
+            <img src="Images/option-3.jpg" alt="option-3">
+            <button id="btn-3">Travel Tips</button>
+        </div>
+    </div>
+
+    <div class="text-background">
+        <h1>"Every journey begins with curiosity,
+            and every destination has a story to tell."</h1>
+        <p>- Wander Whimsy Team</p>
+    </div>
+    <h2>Recent Posts</h2>
+    <div class="container swiper">
+        <div class="card-wrapper">
+            <ul class="card-list swiper-wrapper">
+                <div class="swiper-slide">
+                    <li class="card-item swiper-slide">
+                        <a href="https://theworldtravelguy.com/is-bali-safe/#:~:text=The%20island%20of%20Bali%2C%20Indonesia,most%20places%20in%20the%20world."
+                            target="_blank" class="card-link">
+                            <img src="Images/bali.jpg" class="card-image">
+                            <p class="badge bali">Bali</p>
+                            <h2 class="card-title">Is Bali safe to travel? Here's my personal experience and a fun
+                                story.</h2>
+                            <button class="card-button
+                     material-symbols-rounded">-></button>
+                        </a>
+                    </li>
+                </div>
+                <div class="swiper-slide">
+                    <li class="card-item swiper-slide">
+                        <a href="https://awesomeholidaysnepal.com/blog/nepal-on-the-bucket-list-for-2025/"
+                            target="_blank" class="card-link">
+                            <img src="Images/Nepal.jpg" alt="card image" class="card-image">
+                            <p class="badge Nepal">Nepal</p>
+                            <h2 class="card-title">Here's why visiting Nepal should be in your bucket list this year!
+                            </h2>
+                            <button class="card-button
+                 material-symbols-rounded">-></button>
+                        </a>
+                    </li>
+                </div>
+                <div class="swiper-slide">
+                    <li class="card-item swiper-slide">
+                        <a href="https://www.geoex.com/blog/at-home-in-hunza-an-extraordinary-connection/"
+                            target="_blank" class="card-link">
+                            <img src="Images/Hunza-valley.jpg" class="card-image">
+                            <p class="badge bali">Hunza Valley</p>
+                            <h2 class="card-title">Hunza Valley:An extraordinary connection story.</h2>
+                            <button class="card-button 
+                         material-symbols-rounded">-></button>
+                        </a>
+                    </li>
+                </div>
+                <div class="swiper-slide">
+                    <li class="card-item swiper-slide">
+                        <a href="https://www.travelandleisureasia.com/in/hotels/travel-guide-for-maya-bay-thailand/"
+                            target="_blank" class="card-link">
+                            <img src="Images/Maya_bay.jpg" class="card-image">
+                            <p class="badge Maya_bay">Maya bay</p>
+                            <h2 class="card-title">Maya bay tour guide for 2025. Everything you need to know and more.
+                            </h2>
+                            <button class="card-button
+                     material-symbols-rounded">-></button>
+                        </a>
+                    </li>
+                </div>
+                <div class="swiper-slide">
+                    <li class="card-item swiper-slide">
+                        <a href="https://journal.travelwings.com/things-to-do-in-morocco/" target="_blank"
+                            class="card-link">
+                            <img src="Images/morocco.jpg" class="card-image">
+                            <p class="badge Morocco">Morocco</p>
+                            <h2 class="card-title">21 best things to do in Morocco.</h2>
+                            <button class="card-button
+                     material-symbols-rounded">-></button>
+                        </a>
+                    </li>
+                </div>
+            </ul>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="style.js"></script>
+    </pre>
+</body>
+<footer>
+    <div class="footer-content">
+        <!-- This section introduces the website's purpose or adds a fun quote -->
+        <div class="footer-section intro-section">
+            <p>Did you come here for something in particular or just general Riker?</p>
+        </div>
+
+        <!-- A section with links to different blog categories -->
+        <div class="footer-section">
+            <h3>Blogs</h3>
+            <ul>
+                <li><a href="#">Travel</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Lifestyle</a></li>
+                <li><a href="#">Fashion</a></li>
+                <li><a href="#">Business</a></li>
+            </ul>
+        </div>
+
+        <!-- Quick links for easy navigation -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- Newsletter subscription form and social media links -->
+        <div class="footer-section">
+            <h3>Subscribe For Newsletter</h3>
+            <form>
+                <input type="email" placeholder="Your Email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+
+            <!-- Social media icons for user engagement -->
+            <h3>Follow us</h3>
+            <div class="social-icons">
+                <div class="social-links">
+                    <a href="#"><img src="Images/FB_logo.jpg" alt="Facebook"></a>
+                    <a href="#"><img src="Images/Twitter_logo.jpg" alt="Twitter"></a>
+                    <a href="#"><img src="Images/IG_logo.jpg" alt="Instagram"></a>
+                    <a href="#"><img src="Images/TT_logo.jpg" alt="Tiktok"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>
