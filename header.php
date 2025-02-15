@@ -1,13 +1,46 @@
-<html>
+<?php
+// Start the session (required for user login functionality)
+session_start();
+
+// Database connection (replace with your database credentials)
+$servername = "localhost";
+$username = "anh";
+$password = "123456789";
+$dbname = "wander_whimpsy";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch blog posts from the database (example)
+$sql = "SELECT * FROM blog_posts ORDER BY id DESC LIMIT 5"; // Fetch the latest 5 posts
+$result = $conn->query($sql);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <nav class="navbar">
         <h1 class="logo">Wander Whimsy</h1>
         <ul class="nav-links">
-            <li class="active"><a href="#"></a>Home</li>
-            <li><a href="#"></a>Destination</li>
-            <li><a href="#"></a>Travel Tips</li>
-            <li><a href="#"></a>About</li>
+            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="#">Destination</a></li>
+            <li><a href="#">Travel Tips</a></li>
+            <li><a href="#">About</a></li>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- Show logout link if user is logged in -->
+                <li>
+                <li><a href="logout.php">Logout</a></li>
+            <?php else: ?>
+                <!-- Show login/register links if user is not logged in -->
+                <li><a href="login.php">Login</a></li>
+                <li><a href="register.php">Register</a></li>
+            <?php endif; ?>
         </ul>
         <div class="mobile-nav">
             <img src="./menu-btn.png" alt="" class="menu-btn" />
@@ -16,17 +49,33 @@
     </nav>
 
     <header>
-        <div class="header-content">
-            <h2>Explore The World With Wander Whimsy</h2>
-            <p>
-                Join us on a journey to discover hidden gems, exciting adventures, and
-                unforgettable experiences around the globe. Let Whander Whimsy be your
-                Guide to a world full of wonder and wanderlust.
-            </p>
+    <div class="header-content">
+        <h2>Explore The World With Wander Whimsy</h2>
+        <p>
+            Join us on a journey to discover hidden gems, exciting adventures, and
+            unforgettable experiences around the globe. Let Wander Whimsy be your
+            guide to a world full of wonder and wanderlust.
+        </p>
 
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <!-- Display welcome message if user is logged in -->
+            <?php
+            // Fetch the username from the database
+            $user_id = $_SESSION['user_id'];
+            $stmt = $conn->prepare("SELECT username FROM users WHERE id = ?");
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+            $stmt->bind_result($username);
+            $stmt->fetch();
+            $stmt->close();
+            ?>
+            <p class="welcome-message">Welcome, <?php echo htmlspecialchars($username); ?>!</p>
+        <?php else: ?>
+            <!-- Display "Start Exploring" button if user is not logged in -->
             <a href="#" class="ctn">Start Exploring</a>
-        </div>
-    </header>
+        <?php endif; ?>
+    </div>
+</header>
 
     <script>
         const mobileNav = document.querySelector(".mobile-nav");
@@ -59,7 +108,7 @@
 </head>
 
 <body>
-    <!-- The about us content with image-->
+    <!-- The about us content with image -->
     <div class="body">
         <div id="content-abus">
             <h3 id="header">ABOUT US</h3>
@@ -96,86 +145,40 @@
             and every destination has a story to tell."</h1>
         <p>- Wander Whimsy Team</p>
     </div>
+
     <h2>Recent Posts</h2>
     <div class="container swiper">
         <div class="card-wrapper">
             <ul class="card-list swiper-wrapper">
-                <div class="swiper-slide">
-                    <li class="card-item swiper-slide">
-                        <a href="https://theworldtravelguy.com/is-bali-safe/#:~:text=The%20island%20of%20Bali%2C%20Indonesia,most%20places%20in%20the%20world."
-                            target="_blank" class="card-link">
-                            <img src="Images/bali.jpg" class="card-image">
-                            <p class="badge bali">Bali</p>
-                            <h2 class="card-title">Is Bali safe to travel? Here's my personal experience and a fun
-                                story.</h2>
-                            <button class="card-button
-                     material-symbols-rounded">-></button>
-                        </a>
-                    </li>
-                </div>
-                <div class="swiper-slide">
-                    <li class="card-item swiper-slide">
-                        <a href="https://awesomeholidaysnepal.com/blog/nepal-on-the-bucket-list-for-2025/"
-                            target="_blank" class="card-link">
-                            <img src="Images/Nepal.jpg" alt="card image" class="card-image">
-                            <p class="badge Nepal">Nepal</p>
-                            <h2 class="card-title">Here's why visiting Nepal should be in your bucket list this year!
-                            </h2>
-                            <button class="card-button
-                 material-symbols-rounded">-></button>
-                        </a>
-                    </li>
-                </div>
-                <div class="swiper-slide">
-                    <li class="card-item swiper-slide">
-                        <a href="https://www.geoex.com/blog/at-home-in-hunza-an-extraordinary-connection/"
-                            target="_blank" class="card-link">
-                            <img src="Images/Hunza-valley.jpg" class="card-image">
-                            <p class="badge bali">Hunza Valley</p>
-                            <h2 class="card-title">Hunza Valley:An extraordinary connection story.</h2>
-                            <button class="card-button 
-                         material-symbols-rounded">-></button>
-                        </a>
-                    </li>
-                </div>
-                <div class="swiper-slide">
-                    <li class="card-item swiper-slide">
-                        <a href="https://www.travelandleisureasia.com/in/hotels/travel-guide-for-maya-bay-thailand/"
-                            target="_blank" class="card-link">
-                            <img src="Images/Maya_bay.jpg" class="card-image">
-                            <p class="badge Maya_bay">Maya bay</p>
-                            <h2 class="card-title">Maya bay tour guide for 2025. Everything you need to know and more.
-                            </h2>
-                            <button class="card-button
-                     material-symbols-rounded">-></button>
-                        </a>
-                    </li>
-                </div>
-                <div class="swiper-slide">
-                    <li class="card-item swiper-slide">
-                        <a href="https://journal.travelwings.com/things-to-do-in-morocco/" target="_blank"
-                            class="card-link">
-                            <img src="Images/morocco.jpg" class="card-image">
-                            <p class="badge Morocco">Morocco</p>
-                            <h2 class="card-title">21 best things to do in Morocco.</h2>
-                            <button class="card-button
-                     material-symbols-rounded">-></button>
-                        </a>
-                    </li>
-                </div>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <div class="swiper-slide">
+                            <li class="card-item swiper-slide">
+                                <a href="post.php?id=<?php echo $row['id']; ?>" class="card-link">
+                                    <img src="Images/<?php echo $row['image']; ?>" class="card-image">
+                                    <p class="badge"><?php echo $row['category']; ?></p>
+                                    <h2 class="card-title"><?php echo $row['title']; ?></h2>
+                                    <button class="card-button material-symbols-rounded">-></button>
+                                </a>
+                            </li>
+                        </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <p>No blog posts found.</p>
+                <?php endif; ?>
             </ul>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="style.js"></script>
-    </pre>
 </body>
+
 <footer>
     <div class="footer-content">
-        <!-- This section introduces the website's purpose or adds a fun quote -->
         <div class="footer-section intro-section">
             <p>Did you come here for something in particular or just general Riker?</p>
         </div>
@@ -211,7 +214,7 @@
                 <button type="submit">Subscribe</button>
             </form>
 
-            <!-- Social media icons for user engagement -->
+            <!-- Social media icons -->
             <h3>Follow us</h3>
             <div class="social-icons">
                 <div class="social-links">
