@@ -28,7 +28,7 @@ $result = $conn->query($sql);
     <nav class="navbar">
         <h1 class="logo">Wander Whimsy</h1>
         <ul class="nav-links">
-            <li class="active"><a href="index.php">Home</a></li>
+            <li class="active"><a href="header.php">Home</a></li>
             <li><a href="#">Destination</a></li>
             <li><a href="#">Travel Tips</a></li>
             <li><a href="#">About</a></li>
