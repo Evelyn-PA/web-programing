@@ -33,8 +33,8 @@ $result = $conn->query($sql);
             <li><a href="#">Travel Tips</a></li>
             <li><a href="#">About</a></li>
             <?php if (isset($_SESSION['user_id'])): ?>
-                <!-- Show logout link if user is logged in -->
-                <li>
+                <!-- Show logout link if user is logged in and the create post button-->
+                <li><a href="create_post.php">Create Post</a></li>
                 <li><a href="logout.php">Logout</a></li>
             <?php else: ?>
                 <!-- Show login/register links if user is not logged in -->
