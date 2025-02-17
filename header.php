@@ -155,8 +155,6 @@ $result = $conn->query($sql);
                         <div class="swiper-slide">
                             <li class="card-item swiper-slide">
                                 <a href="post.php?id=<?php echo $row['id']; ?>" class="card-link">
-                                    <img src="Images/<?php echo $row['image']; ?>" class="card-image">
-                                    <p class="badge"><?php echo $row['category']; ?></p>
                                     <h2 class="card-title"><?php echo $row['title']; ?></h2>
                                     <button class="card-button material-symbols-rounded">-></button>
                                 </a>
