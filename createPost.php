@@ -70,6 +70,7 @@ $conn->close();
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+        //Form to create the post content
         <form method="POST">
             <div class="form-group">
                 <label for="title">Title:</label>

@@ -8,3 +8,7 @@
 - *Read Blog Posts*: All users can view a list of blog posts on the website.
 - *Update Blog Posts*: Authors can edit their own blog posts.
 - *Delete Blog Posts*: Authors can delete their own blog posts.
+
+### **Member 3: Comment System**
+- **Add Comments**: Logged-in users can leave comments on blog posts, sharing their thoughts and feedback.
+- **View Comments**: Comments are displayed below each blog post, allowing all users to read and engage with the discussion.
