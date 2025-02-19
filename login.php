@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set session variables
         $_SESSION["user_id"] = $id;
         $_SESSION["loggedin"] = true;
-        $_SESSION["LAST_ACTIVITY"] = time(); // Track last activity time
+        $_SESSION["LAST_ACTIVITY"] = time(); // Update last activity time
 
         // Redirect to the homepage or dashboard
         header("Location: header.php");
@@ -71,7 +71,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Wander Whimsy</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 <body>
     <div class="login-container">

@@ -85,11 +85,12 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Wander Whimsy</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 <body>
     <div class="register-container">
         <h2>Register</h2>
+        <!-- PHP Error Messages -->
         <?php if (!empty($errors)): ?>
             <div class="error-messages">
                 <?php foreach ($errors as $error): ?>
@@ -97,26 +98,29 @@ $conn->close();
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <form method="POST">
+        <!-- JavaScript Error Messages -->
+        <div id="jsErrorMessages" class="error-messages" style="display: none;"></div>
+        <form id="registrationForm" method="POST">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" name="username" placeholder="Enter your username" required>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="Enter your password" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
             <div class="form-group">
                 <label for="confirm_password">Confirm Password:</label>
-                <input type="password" name="confirm_password" placeholder="Confirm your password" required>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
             </div>
             <button type="submit" class="btn">Register</button>
         </form>
         <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        <script src="register.js"></script>
     </div>
 </body>
 </html>

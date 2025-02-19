@@ -35,7 +35,8 @@ $post = $result->fetch_assoc(); // Fetch the post data
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($post['title']); ?> - Wander Whimsy</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.0">
+
 </head>
 <body>
 
@@ -56,7 +57,7 @@ $post = $result->fetch_assoc(); // Fetch the post data
             </form>
         </div>
     <?php else: ?>
-        <p><a href="login.php">Log in</a> to leave a comment.</p>
+        <p id ="text" ><a href="login.php">Log in</a> to leave a comment.</p>
     <?php endif; ?>
 
     <!-- Display Comments -->
