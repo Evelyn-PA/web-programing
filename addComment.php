@@ -31,4 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Invalid request.";
 }
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 15767dc85ef921e73740b18f74d2e5386c5ac314
