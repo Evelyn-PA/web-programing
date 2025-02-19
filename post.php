@@ -60,6 +60,31 @@ $post = $result->fetch_assoc(); // Fetch the post data
     <?php endif; ?>
 
     <!-- Display Comments -->
-    
+    <div class="comments-section">
+        <h3>Comments</h3>
+        <?php
+        // Fetch comments for this post
+        $sql = "SELECT comments.*, users.username 
+                FROM comments 
+                JOIN users ON comments.user_id = users.id 
+                WHERE post_id = ? 
+                ORDER BY created_at DESC";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            while ($comment = $result->fetch_assoc()) {
+                echo "<div class='comment'>";
+                echo "<p><strong>" . htmlspecialchars($comment['username']) . "</strong> <em>(" . $comment['created_at'] . ")</em></p>";
+                echo "<p>" . nl2br(htmlspecialchars($comment['comment'])) . "</p>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p>No comments yet. Be the first to comment!</p>";
+        }
+        ?>
+    </div>
 </body>
 </html>
